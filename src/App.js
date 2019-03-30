@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import $ from 'jquery';
 import './App.css';
+
+
+export function queryBehance(query) {
+ var term = query.replace(/\s/, "+");
+ var url = "https://api.behance.net/v2/projects?q=motorcycle&client_id=dSoSYYcQQTsMHJ9O5hWkN6gns4aV5gOM" + term;
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+    return $.ajax({
+    url: url,
+    type: "get",
+    data: {projects: {}},
+    dataType: "jsonp",
+  }).done((response) => {
+    return <div className="App">response["projects"]
+    </div>
+  }).fail(() => {
+    console.log("Ajax request fails")
+  })
 }
 
+  }
+}
 export default App;
