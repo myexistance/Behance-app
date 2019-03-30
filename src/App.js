@@ -29,13 +29,30 @@ getprojects(){
 }
 
 
- render() {
+ render(projects) {
+   let coffee = projects.projects;
+   console.log("coffee");
      return (
        <div className="App">
          <div className="row">
-           <div>
-             {this.projects}
-           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
          </div>
 
        </div>
